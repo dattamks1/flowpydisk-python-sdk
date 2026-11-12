@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 """A first script against FlowpyDisk, start to finish.
 
-    pip install -e sdk/python
-    export FLOWPYDISK_API_KEY=fd_…                 # Settings > API Keys
+    pip install flowpydisk
+    export FLOWPYDISK_API_KEY=fd_…                 # Settings > Developer
     export FLOWPYDISK_BASE_URL=https://app.flowpydisk.com   # or your own
-    python sdk/python/examples/quickstart.py
+    python examples/quickstart.py
 
 Everything below runs against a real instance. Nothing here is pseudocode:
 C6's bar is that somebody can follow this without reading the spec, so it was

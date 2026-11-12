@@ -1,6 +1,6 @@
 """Five classes, and every error code the backend has.
 
-[SDK_PLAN §5](../../../../docs/SDK_PLAN.md). The worklist's C5 row asks for
+SDK design plan, section 5. The worklist's C5 row asks for
 "quota, size cap, scoped-key not-found, throttles, each with its own exception
 and message". Measured against the tree on 2026-09-15, the backend returns
 **67 distinct ``code`` values**, and sixty-seven exception classes is a

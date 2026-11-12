@@ -2,7 +2,7 @@
 
 The push gate runs this suite on every push and a fresh clone has no editable
 install of this package. Requiring one would mean the gate either skips the SDK
-(the [O15](../../../docs/FINDINGS.md#o15) hole - a check that is silent when it
+(the O15 hole in the findings register - a check that is silent when it
 does not run) or fails a push for something the developer has not set up, which
 is the thing the gate's own comments say it must not do.
 

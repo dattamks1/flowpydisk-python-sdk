@@ -2,12 +2,12 @@
 
 **Opt-in, and loud in both directions.** Set both variables and it runs; set
 neither and it skips with a message saying exactly what to set. What it must
-never be is the [O15](../../../docs/FINDINGS.md#o15) shape - a test that skips
+never be is the O15 shape (findings register) - a test that skips
 silently and leaves a green run looking like proof:
 
     FLOWPY_SDK_BASE_URL=http://127.0.0.1:8000 \
     FLOWPY_SDK_API_KEY=fd_… \
-    python -m pytest sdk/python/tests/test_live.py
+    python -m pytest tests/test_live.py
 
 Setting ONE of the two is treated as a mistake rather than as "not configured",
 because somebody who set one meant to run this.

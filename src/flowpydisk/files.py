@@ -1,6 +1,6 @@
 """One call for something the API deliberately keeps as three or more.
 
-[SDK_PLAN §4](../../../../docs/SDK_PLAN.md). C4, and the row has grown since it
+SDK design plan, section 4. C4, and the row has grown since it
 was written: the worklist calls this "the three-step dance", and since the
 uploads programme shipped on 2026-09-07 it is a threshold decision, a quota
 reservation, N presigned part PUTs with per-part retry, and a completion that

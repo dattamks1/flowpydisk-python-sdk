@@ -1,6 +1,6 @@
 """The transport: auth, errors, retries, pagination.
 
-[SDK_PLAN §3–§4](../../../../docs/SDK_PLAN.md). Everything a generated
+SDK design plan, sections 3 and 4. Everything a generated
 operation needs and cannot have. The generated layer (C3) will call
 ``client.request(...)``; nothing below it knows about any particular endpoint,
 which is why this file can be finished before the generator is chosen.
@@ -170,10 +170,8 @@ class FlowpyDisk:
         ``-id`` breaks the tie on all six paged listings now, so a walk is a
         walk.
 
-        The entry is **M17 of docs/MOBILE_APP_REQUIREMENTS.md**, not of the
-        findings register - which has its own unrelated M17 about rows only
-        appending. Two documents number their own items, and citing the wrong
-        one sends a reader somewhere confidently irrelevant.
+        The entry is M17 of the mobile app requirements, not of the findings
+        register, which has its own unrelated M17.
         """
         offset = 0
         params = dict(kw.pop("params", {}) or {})

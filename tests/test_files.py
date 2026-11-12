@@ -173,7 +173,7 @@ def test_a_RELATIVE_presigned_put_is_resolved_and_DOES_carry_the_key(client, tmp
     `mcp/flowpy_mcp/client.py` has carried this rule since it was written. The
     SDK shipped the "never send the key" half only, every test passed, and it
     was the QUICKSTART - run against a real server for the first time - that
-    found it. `docs/FINDINGS.md#m230`.
+    found it. Findings register M230.
     """
     RELATIVE.append(True)
     client.files.upload(a_file(tmp_path, 50))

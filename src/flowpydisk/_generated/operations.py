@@ -1,11 +1,10 @@
-"""Generated from docs/api/openapi.yaml. DO NOT EDIT.
+"""Generated from the FlowpyDisk OpenAPI spec. DO NOT EDIT.
 
 677 operations across 34 namespaces.
 
-Regenerate with `python sdk/python/generate.py`; `tests/test_generated.py`
-fails the push if this file and the spec disagree. The naming rule and why
-this is hand-rolled rather than an off-the-shelf generator are in
-generate.py's own docstring.
+The generator lives in the FlowpyDisk source repo, and a test there fails
+if this file and the spec disagree. Changes here are made by regenerating,
+never by hand.
 """
 
 from __future__ import annotations

@@ -6,8 +6,8 @@
     for f in client.paginate("storage/files"):
         print(f["name"])
 
-The shape and the reasoning behind every choice here are
-[docs/SDK_PLAN.md](../../../../docs/SDK_PLAN.md).
+The shape and the reasoning behind every choice here are in the
+FlowpyDisk SDK design plan.
 
 **What is built:** the transport (C2) - auth, the error taxonomy, retries,
 pagination; the generated operations (C3), one namespace per tag in the spec
