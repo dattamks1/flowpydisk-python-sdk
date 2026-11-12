@@ -1,0 +1,39 @@
+[project]
+name = "flowpydisk"
+version = "0.0.1"
+description = "Python SDK for FlowpyDisk"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Kashyap Sri Datta M" }]
+dependencies = ["httpx>=0.27"]
+keywords = ["flowpydisk", "sdk", "api", "storage", "calendar", "search"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://flowpydisk.com"
+Repository = "https://github.com/dattamks1/flowpydisk-python-sdk"
+Changelog = "https://github.com/dattamks1/flowpydisk-python-sdk/blob/main/CHANGELOG.md"
+"API reference" = "https://app.flowpydisk.com/api/v1/public/api"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
