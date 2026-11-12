@@ -1861,14 +1861,14 @@ class CollabOps(_Namespace):
         return self._c.request("POST", "collab/presence", json=json, params=params)
 
     def list_me(self, **params: Any) -> Any:
-        """Your presence choice
+        """Your status and status privacy
 
         ``GET /collab/presence/me``
         """
         return self._c.request("GET", "collab/presence/me", params=params)
 
     def update_me(self, *, json: Any = None, **params: Any) -> Any:
-        """Appear offline, or not
+        """Set your status or status privacy
 
         ``PATCH /collab/presence/me``
         """
