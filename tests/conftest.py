@@ -6,7 +6,7 @@ install of this package. Requiring one would mean the gate either skips the SDK
 does not run) or fails a push for something the developer has not set up, which
 is the thing the gate's own comments say it must not do.
 
-`pip install -e sdk/python` still works and is what a user does; this is only
+An editable install (`pip install -e .`) still works; this is only
 so the tests can run from a checkout.
 """
 
