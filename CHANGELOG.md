@@ -5,6 +5,13 @@ All notable changes to this package are listed here. The format follows
 [Semantic Versioning](https://semver.org/). While the version is 0.0.x, a
 release may break the API.
 
+## [0.0.2] - 2026-11-13
+
+### Changed
+
+- README: what the SDK can do, what you need first, and what an API key can reach.
+- Package author is Invrsys.
+
 ## [0.0.1] - 2026-11-13
 
 ### Added

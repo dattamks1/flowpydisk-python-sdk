@@ -1,12 +1,12 @@
 [project]
 name = "flowpydisk"
-version = "0.0.1"
+version = "0.0.2"
 description = "Python SDK for FlowpyDisk"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-authors = [{ name = "Kashyap Sri Datta M" }]
+authors = [{ name = "Invrsys" }]
 dependencies = ["httpx>=0.27"]
 keywords = ["flowpydisk", "sdk", "api", "storage", "calendar", "search"]
 classifiers = [

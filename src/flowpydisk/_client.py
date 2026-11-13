@@ -71,7 +71,7 @@ class FlowpyDisk:
         headers = {
             "Authorization": f"Bearer {api_key}",
             "Accept": "application/json",
-            "User-Agent": "flowpydisk-python/0.0.1",
+            "User-Agent": "flowpydisk-python/0.0.2",
         }
         self._http = httpx.Client(headers=headers, timeout=timeout, transport=transport)
         # One attribute per tag in the spec: client.storage, client.tables, …

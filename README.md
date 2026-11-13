@@ -1,7 +1,29 @@
 # flowpydisk
 
-The Python SDK for [FlowpyDisk](https://flowpydisk.com), a workspace for files,
-calendar, meetings, chat and AI search, in one place.
+The official Python SDK for [FlowpyDisk](https://flowpydisk.com), a product by
+Invrsys. FlowpyDisk is a workspace for files, calendar, meetings, chat and AI
+search, in one place.
+
+## What you can do
+
+- Files and folders: upload, download, move, rename, versions, trash and restore
+- Sharing: share links and permissions
+- Search: by name, inside content, and by meaning
+- Calendar and meetings: events, invites, booking pages, transcripts and recordings
+- Tables, notes, canvases, forms and tasks
+- Workspaces: members, invites, usage and plan limits
+- Webhooks: subscribe to events and check deliveries
+
+Billing and account security are not reachable with an API key. They need a
+signed-in session in the app.
+
+## Before you start
+
+You need:
+
+1. A FlowpyDisk account. Sign up at https://app.flowpydisk.com
+2. A FlowpyDisk API key, made in the app under **Settings > Developer**
+3. Python 3.11 or newer
 
 ## Install
 
@@ -9,7 +31,7 @@ calendar, meetings, chat and AI search, in one place.
 pip install flowpydisk
 ```
 
-Python 3.11 or newer. The only dependency is `httpx`.
+The only dependency is `httpx`.
 
 ## Authenticate
 
@@ -24,9 +46,18 @@ with FlowpyDisk(api_key=os.environ["FLOWPYDISK_API_KEY"]) as client:
     ...
 ```
 
-A key acts in the space it was made in. A key made in your personal space acts
-there; a key made in a workspace acts in that workspace. To work in another
-workspace, make a key in that workspace.
+### What a key can reach
+
+- A key acts as the person who made it, and never does more than they can.
+  If they lose access to something, so does the key.
+- A key works in one space only. A personal key works in your personal space.
+  A workspace key works in that workspace and no other. To work in several
+  workspaces, make one key in each.
+- A key can be read only, or read and write.
+- A key can be limited to one folder and everything inside it. Search and the
+  graph are limited to that folder too.
+- A workspace key can also reach its maker's own drive in that workspace, if
+  that option is turned on for the key.
 
 ## Files and folders
 
@@ -125,6 +156,10 @@ retried, so a create is never sent twice.
 
 - Website: https://flowpydisk.com
 - Public API catalogue: https://app.flowpydisk.com/api/v1/public/api
+
+## Contributions
+
+This repository does not accept contributions, pull requests or issues for now.
 
 ## License
 
