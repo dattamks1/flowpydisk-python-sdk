@@ -5,6 +5,12 @@ All notable changes to this package are listed here. The format follows
 [Semantic Versioning](https://semver.org/). While the version is 0.0.x, a
 release may break the API.
 
+## [Unreleased]
+
+### Added
+
+- Operations from the API as of 2026-11-15 (683 in all): the camera backup destination, a signed note export link, public coupon codes, and the `semantic` search mode (`meaning` is a deprecated alias on the server).
+
 ## [0.0.2] - 2026-11-13
 
 ### Changed

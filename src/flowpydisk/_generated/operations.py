@@ -1,6 +1,6 @@
 """Generated from the FlowpyDisk OpenAPI spec. DO NOT EDIT.
 
-677 operations across 34 namespaces.
+683 operations across 34 namespaces.
 
 The generator lives in the FlowpyDisk source repo, and a test there fails
 if this file and the spec disagree. Changes here are made by regenerating,
@@ -279,7 +279,7 @@ class AuthOps(_Namespace):
         return self._c.request("POST", "auth/session", json=json, params=params)
 
     def create_session_exchange(self, *, json: Any = None, **params: Any) -> Any:
-        """Hand a signed-in browser session to a native client
+        """Hand a native app's sign-in to a web view
 
         ``POST /auth/session-exchange``
         """
@@ -533,7 +533,7 @@ class BannersOps(_Namespace):
 
 
 class BillingOps(_Namespace):
-    """12 operations."""
+    """13 operations."""
 
     def get_pdf_credit_notes(self, credit_note_id: str, **params: Any) -> Any:
         """One of the account's credit notes as a PDF
@@ -597,6 +597,13 @@ class BillingOps(_Namespace):
         ``POST /coupons/preview``
         """
         return self._c.request("POST", "coupons/preview", json=json, params=params)
+
+    def list_public(self, **params: Any) -> Any:
+        """The coupon codes anyone signed in may use
+
+        ``GET /coupons/public``
+        """
+        return self._c.request("GET", "coupons/public", params=params)
 
     def create_redeem(self, *, json: Any = None, **params: Any) -> Any:
         """Redeem a free-months or AI-credits coupon
@@ -2720,7 +2727,7 @@ class MailOps(_Namespace):
 
 
 class MarketOps(_Namespace):
-    """14 operations."""
+    """16 operations."""
 
     def list_files(self, **params: Any) -> Any:
         """Browse published files (the Discover tab)
@@ -2730,11 +2737,18 @@ class MarketOps(_Namespace):
         return self._c.request("GET", "market/files", params=params)
 
     def get_preview_files(self, file_id: str, **params: Any) -> Any:
-        """Preview a published file (a teaser, never the file)
+        """Preview a published file
 
         ``GET /market/files/{file_id}/preview``
         """
         return self._c.request("GET", f"market/files/{file_id}/preview", params=params)
+
+    def get_document_preview(self, file_id: str, **params: Any) -> Any:
+        """A published Word document, as the app's reader draws it
+
+        ``GET /market/files/{file_id}/preview/document``
+        """
+        return self._c.request("GET", f"market/files/{file_id}/preview/document", params=params)
 
     def get_image_preview(self, file_id: str, **params: Any) -> Any:
         """A published image's reduced copy, as a JPEG
@@ -2756,6 +2770,13 @@ class MarketOps(_Namespace):
         ``GET /market/files/{file_id}/preview/poster``
         """
         return self._c.request("GET", f"market/files/{file_id}/preview/poster", params=params)
+
+    def get_read_preview(self, file_id: str, **params: Any) -> Any:
+        """A published file itself, inline, for its reader
+
+        ``GET /market/files/{file_id}/preview/read``
+        """
+        return self._c.request("GET", f"market/files/{file_id}/preview/read", params=params)
 
     def report_files(self, file_id: str, *, json: Any = None, **params: Any) -> Any:
         """Report something on the shelf
@@ -3823,7 +3844,7 @@ class SharingOps(_Namespace):
 
 
 class StorageOps(_Namespace):
-    """58 operations."""
+    """61 operations."""
 
     def list_home(self, **params: Any) -> Any:
         """Everything the Home screen draws, in one request
@@ -3874,12 +3895,33 @@ class StorageOps(_Namespace):
         """
         return self._c.request("GET", "storage/camera-backup", params=params)
 
+    def list_destination(self, **params: Any) -> Any:
+        """Where the account's camera backup goes
+
+        ``GET /storage/camera-backup/destination``
+        """
+        return self._c.request("GET", "storage/camera-backup/destination", params=params)
+
+    def update_destination(self, *, json: Any = None, **params: Any) -> Any:
+        """Point camera backup at a folder
+
+        ``PUT /storage/camera-backup/destination``
+        """
+        return self._c.request("PUT", "storage/camera-backup/destination", json=json, params=params)
+
     def list_download(self, **params: Any) -> Any:
         """Bulk-download a selection of files and folders as one .zip
 
         ``GET /storage/download``
         """
         return self._c.request("GET", "storage/download", params=params)
+
+    def get_export_links(self, token: str, **params: Any) -> Any:
+        """Open a note export link
+
+        ``GET /storage/export-links/{token}``
+        """
+        return self._c.request("GET", f"storage/export-links/{token}", params=params)
 
     def list_files(self, **params: Any) -> Any:
         """List files (by folder, or every folder with ?scope=all; excludes trashed)
