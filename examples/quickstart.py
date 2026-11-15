@@ -34,7 +34,7 @@ API_KEY = os.environ.get("FLOWPYDISK_API_KEY")
 
 def main() -> int:
     if not API_KEY:
-        print("Set FLOWPYDISK_API_KEY. Mint one in Settings > API Keys.", file=sys.stderr)  # noqa: T201
+        print("Set FLOWPYDISK_API_KEY. Mint one in Settings > Developer.", file=sys.stderr)  # noqa: T201
         return 2
 
     # 1. A client. It acts in the space the key was made in: a workspace key

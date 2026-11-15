@@ -5,6 +5,12 @@ All notable changes to this package are listed here. The format follows
 [Semantic Versioning](https://semver.org/). While the version is 0.0.x, a
 release may break the API.
 
+## [Unreleased]
+
+### Fixed
+
+- The missing-key error and the quickstart now point to Settings > Developer, where the app keeps API keys.
+
 ## [0.0.3] - 2026-11-15
 
 ### Added
