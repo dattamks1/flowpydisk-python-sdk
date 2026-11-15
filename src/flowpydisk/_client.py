@@ -43,7 +43,7 @@ class FlowpyDisk:
 
     A key acts in its own space and nowhere else: a key made in your personal
     space acts there, a key made in a workspace acts in that workspace. To act
-    in a workspace, mint a key in that workspace (Settings > API Keys).
+    in a workspace, mint a key in that workspace (Settings > Developer).
 
     There is no ``workspace`` argument (removed 2026-11-10, M3762). It sent a
     ``Workspace-Id`` header, and the server ignores that header for every API
@@ -65,7 +65,7 @@ class FlowpyDisk:
         transport: httpx.BaseTransport | None = None,
     ) -> None:
         if not api_key:
-            raise ValueError("api_key is required. Mint one in Settings > API Keys.")
+            raise ValueError("api_key is required. Mint one in Settings > Developer.")
         self.base_url = base_url.rstrip("/") + "/"
         self.retries = retries
         headers = {
