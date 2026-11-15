@@ -5,7 +5,7 @@ All notable changes to this package are listed here. The format follows
 [Semantic Versioning](https://semver.org/). While the version is 0.0.x, a
 release may break the API.
 
-## [Unreleased]
+## [0.0.3] - 2026-11-15
 
 ### Added
 
