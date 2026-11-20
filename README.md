@@ -54,8 +54,6 @@ with FlowpyDisk(api_key=os.environ["FLOWPYDISK_API_KEY"]) as client:
   A workspace key works in that workspace and no other. To work in several
   workspaces, make one key in each.
 - A key can be read only, or read and write.
-- A key can be limited to one folder and everything inside it. Search and the
-  graph are limited to that folder too.
 - A workspace key can also reach its maker's own drive in that workspace, if
   that option is turned on for the key.
 
