@@ -1,6 +1,6 @@
 """Generated from the FlowpyDisk OpenAPI spec. DO NOT EDIT.
 
-717 operations across 34 namespaces.
+728 operations across 34 namespaces.
 
 The generator lives in the FlowpyDisk source repo, and a test there fails
 if this file and the spec disagree. Changes here are made by regenerating,
@@ -831,7 +831,7 @@ class CalendarOps(_Namespace):
 
 
 class CanvasOps(_Namespace):
-    """33 operations."""
+    """35 operations."""
 
     def list_canvas(self, **params: Any) -> Any:
         """List boards
@@ -867,6 +867,20 @@ class CanvasOps(_Namespace):
         ``GET /canvas/cards/{card_id}/files/{file_id}``
         """
         return self._c.request("GET", f"canvas/cards/{card_id}/files/{file_id}", params=params)
+
+    def get_position_files(self, card_id: str, file_id: str, **params: Any) -> Any:
+        """Where you were in this video or audio file, through a card on a board shared with you
+
+        ``GET /canvas/cards/{card_id}/files/{file_id}/position``
+        """
+        return self._c.request("GET", f"canvas/cards/{card_id}/files/{file_id}/position", params=params)
+
+    def update_position_files(self, card_id: str, file_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Save where you are in this video or audio file, through a card on a board shared with you
+
+        ``PUT /canvas/cards/{card_id}/files/{file_id}/position``
+        """
+        return self._c.request("PUT", f"canvas/cards/{card_id}/files/{file_id}/position", json=json, params=params)
 
     def get_preview_files(self, card_id: str, file_id: str, **params: Any) -> Any:
         """Read a Word document a card shows
@@ -1066,7 +1080,7 @@ class CanvasOps(_Namespace):
 
 
 class CollabOps(_Namespace):
-    """140 operations."""
+    """142 operations."""
 
     def create_messages(self, *, json: Any = None, **params: Any) -> Any:
         """An app writes to its person
@@ -1081,6 +1095,20 @@ class CollabOps(_Namespace):
         ``GET /collab/attachments/{attachment_id}/content``
         """
         return self._c.request("GET", f"collab/attachments/{attachment_id}/content", params=params)
+
+    def get_position_attachments(self, attachment_id: str, **params: Any) -> Any:
+        """Where you were in this video or audio file, posted in a conversation you are in
+
+        ``GET /collab/attachments/{attachment_id}/position``
+        """
+        return self._c.request("GET", f"collab/attachments/{attachment_id}/position", params=params)
+
+    def update_position_attachments(self, attachment_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Save where you are in this video or audio file, posted in a conversation you are in
+
+        ``PUT /collab/attachments/{attachment_id}/position``
+        """
+        return self._c.request("PUT", f"collab/attachments/{attachment_id}/position", json=json, params=params)
 
     def save_attachments(self, attachment_id: str, *, json: Any = None, **params: Any) -> Any:
         """Keep a copy of a file from a chat you are in
@@ -4026,7 +4054,7 @@ class SharingOps(_Namespace):
 
 
 class StorageOps(_Namespace):
-    """67 operations."""
+    """70 operations."""
 
     def list_home(self, **params: Any) -> Any:
         """Everything the Home screen draws, in one request
@@ -4041,6 +4069,13 @@ class StorageOps(_Namespace):
         ``GET /home/brief``
         """
         return self._c.request("GET", "home/brief", params=params)
+
+    def create_read(self, *, json: Any = None, **params: Any) -> Any:
+        """Mark today's brief read
+
+        ``POST /home/brief/read``
+        """
+        return self._c.request("POST", "home/brief/read", json=json, params=params)
 
     def list_layout(self, **params: Any) -> Any:
         """The person's saved Home layout
@@ -4223,6 +4258,20 @@ class StorageOps(_Namespace):
         ``POST /storage/files/{file_id}/pdf-pages``
         """
         return self._c.request("POST", f"storage/files/{file_id}/pdf-pages", json=json, params=params)
+
+    def get_position_files(self, file_id: str, **params: Any) -> Any:
+        """Where you were in this video or audio file
+
+        ``GET /storage/files/{file_id}/position``
+        """
+        return self._c.request("GET", f"storage/files/{file_id}/position", params=params)
+
+    def update_position_files(self, file_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Save where you are in this video or audio file
+
+        ``PUT /storage/files/{file_id}/position``
+        """
+        return self._c.request("PUT", f"storage/files/{file_id}/position", json=json, params=params)
 
     def get_preview_files(self, file_id: str, **params: Any) -> Any:
         """Read a Word document in the app
@@ -4512,7 +4561,7 @@ class SyncOps(_Namespace):
 
 
 class TablesOps(_Namespace):
-    """38 operations."""
+    """40 operations."""
 
     def list_tables(self, **params: Any) -> Any:
         """List tables
@@ -4688,6 +4737,20 @@ class TablesOps(_Namespace):
         ``GET /tables/{table_id}/files/{file_id}``
         """
         return self._c.request("GET", f"tables/{table_id}/files/{file_id}", params=params)
+
+    def get_position_files(self, table_id: str, file_id: str, **params: Any) -> Any:
+        """Where you were in this video or audio file, through a table's cell shared with you
+
+        ``GET /tables/{table_id}/files/{file_id}/position``
+        """
+        return self._c.request("GET", f"tables/{table_id}/files/{file_id}/position", params=params)
+
+    def update_position_files(self, table_id: str, file_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Save where you are in this video or audio file, through a table's cell shared with you
+
+        ``PUT /tables/{table_id}/files/{file_id}/position``
+        """
+        return self._c.request("PUT", f"tables/{table_id}/files/{file_id}/position", json=json, params=params)
 
     def get_preview_files(self, table_id: str, file_id: str, **params: Any) -> Any:
         """Read a Word document a table's cell holds
@@ -5059,7 +5122,7 @@ class WebhooksOps(_Namespace):
 
 
 class WorkspacesOps(_Namespace):
-    """25 operations."""
+    """27 operations."""
 
     def get_invites(self, token: str, **params: Any) -> Any:
         """What this invitation is for, before accepting it
@@ -5095,6 +5158,13 @@ class WorkspacesOps(_Namespace):
         ``PATCH /personal-space``
         """
         return self._c.request("PATCH", "personal-space", json=json, params=params)
+
+    def update_pin(self, *, json: Any = None, **params: Any) -> Any:
+        """Pin or unpin your personal space in your switcher
+
+        ``PUT /personal-space/pin``
+        """
+        return self._c.request("PUT", "personal-space/pin", json=json, params=params)
 
     def list_workspaces(self, **params: Any) -> Any:
         """The workspaces you belong to, with your role in each
@@ -5225,6 +5295,13 @@ class WorkspacesOps(_Namespace):
         return self._c.request(
             "PATCH", f"workspaces/{workspace_id}/members/{user_id}/storage-cap", json=json, params=params
         )
+
+    def update_pin_workspaces(self, workspace_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Pin or unpin a workspace in your switcher
+
+        ``PUT /workspaces/{workspace_id}/pin``
+        """
+        return self._c.request("PUT", f"workspaces/{workspace_id}/pin", json=json, params=params)
 
     def get_storage_by_person_workspaces(self, workspace_id: str, **params: Any) -> Any:
         """Storage by person
