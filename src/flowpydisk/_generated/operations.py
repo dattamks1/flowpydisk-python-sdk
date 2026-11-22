@@ -1,6 +1,6 @@
 """Generated from the FlowpyDisk OpenAPI spec. DO NOT EDIT.
 
-728 operations across 34 namespaces.
+738 operations across 34 namespaces.
 
 The generator lives in the FlowpyDisk source repo, and a test there fails
 if this file and the spec disagree. Changes here are made by regenerating,
@@ -20,7 +20,7 @@ class _Namespace:
 
 
 class AccountOps(_Namespace):
-    """10 operations."""
+    """11 operations."""
 
     def create_consent(self, *, json: Any = None, **params: Any) -> Any:
         """Record ToS/policy acceptance
@@ -28,6 +28,13 @@ class AccountOps(_Namespace):
         ``POST /auth/account/consent``
         """
         return self._c.request("POST", "auth/account/consent", json=json, params=params)
+
+    def list_marketing(self, **params: Any) -> Any:
+        """The product updates and offers email opt-in
+
+        ``GET /auth/account/marketing``
+        """
+        return self._c.request("GET", "auth/account/marketing", params=params)
 
     def create_restore(self, *, json: Any = None, **params: Any) -> Any:
         """Restore a deleted account inside its 30 days
@@ -1080,7 +1087,7 @@ class CanvasOps(_Namespace):
 
 
 class CollabOps(_Namespace):
-    """142 operations."""
+    """145 operations."""
 
     def create_messages(self, *, json: Any = None, **params: Any) -> Any:
         """An app writes to its person
@@ -1235,6 +1242,13 @@ class CollabOps(_Namespace):
         ``POST /collab/conversations/{conv_id}/archive``
         """
         return self._c.request("POST", f"collab/conversations/{conv_id}/archive", json=json, params=params)
+
+    def ask_agree_again_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Ask everyone to agree to a public channel's rules again
+
+        ``POST /collab/conversations/{conv_id}/ask_agree_again``
+        """
+        return self._c.request("POST", f"collab/conversations/{conv_id}/ask_agree_again", json=json, params=params)
 
     def delete_avatar_conversations(self, conv_id: str, **params: Any) -> Any:
         """Back to the channel's pattern
@@ -1796,6 +1810,20 @@ class CollabOps(_Namespace):
         ``POST /collab/meetings/{meeting_id}/quality``
         """
         return self._c.request("POST", f"collab/meetings/{meeting_id}/quality", json=json, params=params)
+
+    def get_rating_meetings(self, meeting_id: str, **params: Any) -> Any:
+        """Your rating of a call, and the tags to offer
+
+        ``GET /collab/meetings/{meeting_id}/rating``
+        """
+        return self._c.request("GET", f"collab/meetings/{meeting_id}/rating", params=params)
+
+    def update_rating_meetings(self, meeting_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Rate a call
+
+        ``PUT /collab/meetings/{meeting_id}/rating``
+        """
+        return self._c.request("PUT", f"collab/meetings/{meeting_id}/rating", json=json, params=params)
 
     def state_meetings(self, meeting_id: str, *, json: Any = None, **params: Any) -> Any:
         """The meeting now (and your heartbeat)
@@ -2502,7 +2530,7 @@ class KnowledgeOps(_Namespace):
 
 
 class MailOps(_Namespace):
-    """53 operations."""
+    """55 operations."""
 
     def list_bulk_sends(self, **params: Any) -> Any:
         """List bulk sends
@@ -2864,6 +2892,20 @@ class MailOps(_Namespace):
         ``POST /mail/threads/{thread_id}/invite``
         """
         return self._c.request("POST", f"mail/threads/{thread_id}/invite", json=json, params=params)
+
+    def get_summary_threads(self, thread_id: str, **params: Any) -> Any:
+        """The kept summary of a mail conversation
+
+        ``GET /mail/threads/{thread_id}/summary``
+        """
+        return self._c.request("GET", f"mail/threads/{thread_id}/summary", params=params)
+
+    def summary_threads(self, thread_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Summarise a mail conversation (the Summarise tap)
+
+        ``POST /mail/threads/{thread_id}/summary``
+        """
+        return self._c.request("POST", f"mail/threads/{thread_id}/summary", json=json, params=params)
 
     def get_unsubscribe(self, token: str, **params: Any) -> Any:
         """What a bulk mail's unsubscribe link leaves
@@ -5122,7 +5164,7 @@ class WebhooksOps(_Namespace):
 
 
 class WorkspacesOps(_Namespace):
-    """27 operations."""
+    """31 operations."""
 
     def get_invites(self, token: str, **params: Any) -> Any:
         """What this invitation is for, before accepting it
@@ -5180,6 +5222,13 @@ class WorkspacesOps(_Namespace):
         """
         return self._c.request("GET", "workspaces/capabilities", params=params)
 
+    def create_join(self, *, json: Any = None, **params: Any) -> Any:
+        """Join a workspace with an invitation's short code
+
+        ``POST /workspaces/join``
+        """
+        return self._c.request("POST", "workspaces/join", json=json, params=params)
+
     def delete_workspaces(self, workspace_id: str, **params: Any) -> Any:
         """Delete a workspace and everything in it
 
@@ -5228,6 +5277,27 @@ class WorkspacesOps(_Namespace):
         ``DELETE /workspaces/{workspace_id}/invites/{invite_id}``
         """
         return self._c.request("DELETE", f"workspaces/{workspace_id}/invites/{invite_id}", params=params)
+
+    def delete_code_invites(self, workspace_id: str, invite_id: str, **params: Any) -> Any:
+        """Take a pending invitation's join code away
+
+        ``DELETE /workspaces/{workspace_id}/invites/{invite_id}/code``
+        """
+        return self._c.request("DELETE", f"workspaces/{workspace_id}/invites/{invite_id}/code", params=params)
+
+    def get_code_invites(self, workspace_id: str, invite_id: str, **params: Any) -> Any:
+        """A pending invitation's short join code
+
+        ``GET /workspaces/{workspace_id}/invites/{invite_id}/code``
+        """
+        return self._c.request("GET", f"workspaces/{workspace_id}/invites/{invite_id}/code", params=params)
+
+    def code_invites(self, workspace_id: str, invite_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Make a new join code for a pending invitation
+
+        ``POST /workspaces/{workspace_id}/invites/{invite_id}/code``
+        """
+        return self._c.request("POST", f"workspaces/{workspace_id}/invites/{invite_id}/code", json=json, params=params)
 
     def get_link_invites(self, workspace_id: str, invite_id: str, **params: Any) -> Any:
         """The link a pending invitation's email carries

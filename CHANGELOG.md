@@ -7,6 +7,21 @@ release may break the API.
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-11-22
+
+### Added
+
+- Operations from the API as of 2026-11-22, third release:
+  - `workspaces.create_join()` joins a workspace with an invite's short code.
+  - `collab.get_rating_meetings()` and `collab.update_rating_meetings()` read and save a call-quality rating.
+  - `mail.summary_threads()` makes a short summary of a mail thread (charged as an AI question). `mail.get_summary_threads()` reads the kept one.
+  - `account.list_marketing()` reads the product updates and offers opt-in.
+  - Usage answers carry `ai_units.topup_next_expires_at` and `transcription_minutes`. Home carries `get_started` and `counts.trash`.
+
+### Changed
+
+- Every person's `avatar_url` is now a stable `/p/avatar/<token>.jpg` address (or null).
+
 ## [0.0.5] - 2026-11-22
 
 ### Added
