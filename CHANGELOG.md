@@ -7,6 +7,15 @@ release may break the API.
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-11-22
+
+### Added
+
+- Operations from the API as of 2026-11-22, second release (728 in all):
+  - `storage.create_read()` (`POST /home/brief/read`) marks today's brief read. The brief now carries up to three `items` with targets.
+  - Watch progress: `storage.get_position_files()` and `storage.update_position_files()`, plus position routes for board card files, table files and chat attachments.
+  - Workspaces: `pinned` and `has_unread` on rows, `workspaces.update_pin_workspaces()` and `workspaces.update_pin()` for the personal space, and opt-in `search`, `limit` and `offset`.
+
 ## [0.0.4] - 2026-11-22
 
 ### Added
