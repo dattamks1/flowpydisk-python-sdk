@@ -7,6 +7,16 @@ release may break the API.
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-11-22
+
+### Added
+
+- Operations from the API as of 2026-11-22 (718 in all), among them `booking.duplicate_booking_pages(page_id)`, which copies a booking page (paused, new link, no bookings), the Collab support chat, channel pictures, and stickers.
+
+### Changed
+
+- Several answers carry new fields (file cards' `duration_seconds` and `thumbnail_url`, public channels' `members_preview`, receipts' `read_message_id`). No existing method changed.
+
 ### Fixed
 
 - The missing-key error and the quickstart now point to Settings > Developer, where the app keeps API keys.
