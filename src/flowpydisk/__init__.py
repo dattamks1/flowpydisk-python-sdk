@@ -31,7 +31,7 @@ from .files import Files
 from .inbound_webhooks import sign_inbound_webhook
 from .webhooks import SIGNATURE_HEADER, verify_webhook
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 __all__ = [
     "DEFAULT_BASE_URL",
