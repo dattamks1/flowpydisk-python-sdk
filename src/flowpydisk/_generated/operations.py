@@ -1,6 +1,6 @@
 """Generated from the FlowpyDisk OpenAPI spec. DO NOT EDIT.
 
-683 operations across 34 namespaces.
+717 operations across 34 namespaces.
 
 The generator lives in the FlowpyDisk source repo, and a test there fails
 if this file and the spec disagree. Changes here are made by regenerating,
@@ -20,21 +20,7 @@ class _Namespace:
 
 
 class AccountOps(_Namespace):
-    """13 operations."""
-
-    def delete_avatar(self, **params: Any) -> Any:
-        """Clear the profile picture
-
-        ``DELETE /auth/account/avatar``
-        """
-        return self._c.request("DELETE", "auth/account/avatar", params=params)
-
-    def update_avatar(self, *, json: Any = None, **params: Any) -> Any:
-        """Set the profile picture (owner session only)
-
-        ``PATCH /auth/account/avatar``
-        """
-        return self._c.request("PATCH", "auth/account/avatar", json=json, params=params)
+    """10 operations."""
 
     def create_consent(self, *, json: Any = None, **params: Any) -> Any:
         """Record ToS/policy acceptance
@@ -56,13 +42,6 @@ class AccountOps(_Namespace):
         ``GET /auth/account/settings``
         """
         return self._c.request("GET", "auth/account/settings", params=params)
-
-    def update_settings(self, *, json: Any = None, **params: Any) -> Any:
-        """Update account preferences
-
-        ``PATCH /auth/account/settings``
-        """
-        return self._c.request("PATCH", "auth/account/settings", json=json, params=params)
 
     def list_username(self, **params: Any) -> Any:
         """Your username and when you may change it
@@ -115,7 +94,7 @@ class AccountOps(_Namespace):
 
 
 class AuthOps(_Namespace):
-    """48 operations."""
+    """45 operations."""
 
     def list_challenge(self, **params: Any) -> Any:
         """How to sign in to THIS deployment
@@ -138,13 +117,6 @@ class AuthOps(_Namespace):
         """
         return self._c.request("GET", "auth/devices", params=params)
 
-    def create_devices(self, *, json: Any = None, **params: Any) -> Any:
-        """Register this device
-
-        ``POST /auth/devices``
-        """
-        return self._c.request("POST", "auth/devices", json=json, params=params)
-
     def create_join(self, *, json: Any = None, **params: Any) -> Any:
         """Join FlowpyDisk with an existing INVRSYS login (D5)
 
@@ -158,13 +130,6 @@ class AuthOps(_Namespace):
         ``POST /auth/login``
         """
         return self._c.request("POST", "auth/login", json=json, params=params)
-
-    def list_login_history(self, **params: Any) -> Any:
-        """Recent successful sign-ins (Settings → Security)
-
-        ``GET /auth/login-history``
-        """
-        return self._c.request("GET", "auth/login-history", params=params)
 
     def create_logout(self, *, json: Any = None, **params: Any) -> Any:
         """Log out
@@ -277,13 +242,6 @@ class AuthOps(_Namespace):
         ``POST /auth/session``
         """
         return self._c.request("POST", "auth/session", json=json, params=params)
-
-    def create_session_exchange(self, *, json: Any = None, **params: Any) -> Any:
-        """Hand a native app's sign-in to a web view
-
-        ``POST /auth/session-exchange``
-        """
-        return self._c.request("POST", "auth/session-exchange", json=json, params=params)
 
     def create_signup_confirm(self, *, json: Any = None, **params: Any) -> Any:
         """Confirm a sign-up code by address, from the sign-in screen
@@ -628,7 +586,7 @@ class BillingOps(_Namespace):
 
 
 class BookingOps(_Namespace):
-    """16 operations."""
+    """17 operations."""
 
     def list_booking_pages(self, **params: Any) -> Any:
         """List your booking pages
@@ -705,6 +663,13 @@ class BookingOps(_Namespace):
         ``POST /booking-pages/{page_id}/bookings/{booking_id}/move``
         """
         return self._c.request("POST", f"booking-pages/{page_id}/bookings/{booking_id}/move", json=json, params=params)
+
+    def duplicate_booking_pages(self, page_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Copy a booking page - the same settings, none of the bookings
+
+        ``POST /booking-pages/{page_id}/duplicate``
+        """
+        return self._c.request("POST", f"booking-pages/{page_id}/duplicate", json=json, params=params)
 
     def purge_booking_pages(self, page_id: str, *, json: Any = None, **params: Any) -> Any:
         """Delete a trashed booking page permanently
@@ -866,7 +831,7 @@ class CalendarOps(_Namespace):
 
 
 class CanvasOps(_Namespace):
-    """26 operations."""
+    """33 operations."""
 
     def list_canvas(self, **params: Any) -> Any:
         """List boards
@@ -924,6 +889,27 @@ class CanvasOps(_Namespace):
         """
         return self._c.request("GET", f"canvas/cards/{card_id}/preview-image", params=params)
 
+    def reactions_cards(self, card_id: str, *, json: Any = None, **params: Any) -> Any:
+        """React to a card, or take a reaction back
+
+        ``POST /canvas/cards/{card_id}/reactions``
+        """
+        return self._c.request("POST", f"canvas/cards/{card_id}/reactions", json=json, params=params)
+
+    def delete_task_cards(self, card_id: str, **params: Any) -> Any:
+        """Unlink a task card from its task
+
+        ``DELETE /canvas/cards/{card_id}/task``
+        """
+        return self._c.request("DELETE", f"canvas/cards/{card_id}/task", params=params)
+
+    def task_cards(self, card_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Make a task card a task in Tasks, linked both ways
+
+        ``POST /canvas/cards/{card_id}/task``
+        """
+        return self._c.request("POST", f"canvas/cards/{card_id}/task", json=json, params=params)
+
     def ungroup_cards(self, card_id: str, *, json: Any = None, **params: Any) -> Any:
         """Dissolve a group
 
@@ -945,6 +931,20 @@ class CanvasOps(_Namespace):
         """
         return self._c.request("PATCH", f"canvas/connections/{connection_id}", json=json, params=params)
 
+    def create_link_previews(self, *, json: Any = None, **params: Any) -> Any:
+        """A note's bookmark card, the board's link preview asked from a note
+
+        ``POST /canvas/link-previews``
+        """
+        return self._c.request("POST", "canvas/link-previews", json=json, params=params)
+
+    def get_image_link_previews(self, preview_id: str, **params: Any) -> Any:
+        """A note bookmark card's picture, from our origin
+
+        ``GET /canvas/link-previews/{preview_id}/image``
+        """
+        return self._c.request("GET", f"canvas/link-previews/{preview_id}/image", params=params)
+
     def delete_canvas(self, canvas_id: str, **params: Any) -> Any:
         """Move a board to trash
 
@@ -965,6 +965,13 @@ class CanvasOps(_Namespace):
         ``PATCH /canvas/{canvas_id}``
         """
         return self._c.request("PATCH", f"canvas/{canvas_id}", json=json, params=params)
+
+    def arrange_canvas(self, canvas_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Place or size many cards in one write
+
+        ``POST /canvas/{canvas_id}/arrange``
+        """
+        return self._c.request("POST", f"canvas/{canvas_id}/arrange", json=json, params=params)
 
     def delete_cards_canvas(self, canvas_id: str, **params: Any) -> Any:
         """Empty a board
@@ -1009,7 +1016,7 @@ class CanvasOps(_Namespace):
         return self._c.request("POST", f"canvas/{canvas_id}/duplicate", json=json, params=params)
 
     def group_canvas(self, canvas_id: str, *, json: Any = None, **params: Any) -> Any:
-        """Group several cards into a named section
+        """Group several cards into a named section, or frame them
 
         ``POST /canvas/{canvas_id}/group``
         """
@@ -1028,6 +1035,13 @@ class CanvasOps(_Namespace):
         ``POST /canvas/{canvas_id}/items/restore``
         """
         return self._c.request("POST", f"canvas/{canvas_id}/items/restore", json=json, params=params)
+
+    def mind_map_canvas(self, canvas_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Make a mind map from an outline, or grow one topic
+
+        ``POST /canvas/{canvas_id}/mind-map``
+        """
+        return self._c.request("POST", f"canvas/{canvas_id}/mind-map", json=json, params=params)
 
     def purge_canvas(self, canvas_id: str, *, json: Any = None, **params: Any) -> Any:
         """Permanently delete a board that is in Trash
@@ -1052,7 +1066,7 @@ class CanvasOps(_Namespace):
 
 
 class CollabOps(_Namespace):
-    """127 operations."""
+    """140 operations."""
 
     def create_messages(self, *, json: Any = None, **params: Any) -> Any:
         """An app writes to its person
@@ -1110,6 +1124,20 @@ class CollabOps(_Namespace):
         """
         return self._c.request("GET", "collab/calls/ringing", params=params)
 
+    def get_by_handle(self, handle: str, **params: Any) -> Any:
+        """A public channel by its handle
+
+        ``GET /collab/channels/by-handle/{handle}``
+        """
+        return self._c.request("GET", f"collab/channels/by-handle/{handle}", params=params)
+
+    def list_handle_check(self, **params: Any) -> Any:
+        """Is a channel handle free
+
+        ``GET /collab/channels/handle-check``
+        """
+        return self._c.request("GET", "collab/channels/handle-check", params=params)
+
     def list_trending(self, **params: Any) -> Any:
         """Public channels busiest this week
 
@@ -1166,12 +1194,54 @@ class CollabOps(_Namespace):
         """
         return self._c.request("PATCH", f"collab/conversations/{conv_id}", json=json, params=params)
 
+    def agree_rules_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Agree to a public channel's rules
+
+        ``POST /collab/conversations/{conv_id}/agree_rules``
+        """
+        return self._c.request("POST", f"collab/conversations/{conv_id}/agree_rules", json=json, params=params)
+
     def archive_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
         """Archive
 
         ``POST /collab/conversations/{conv_id}/archive``
         """
         return self._c.request("POST", f"collab/conversations/{conv_id}/archive", json=json, params=params)
+
+    def delete_avatar_conversations(self, conv_id: str, **params: Any) -> Any:
+        """Back to the channel's pattern
+
+        ``DELETE /collab/conversations/{conv_id}/avatar``
+        """
+        return self._c.request("DELETE", f"collab/conversations/{conv_id}/avatar", params=params)
+
+    def update_avatar_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Upload a channel's avatar picture
+
+        ``PUT /collab/conversations/{conv_id}/avatar``
+        """
+        return self._c.request("PUT", f"collab/conversations/{conv_id}/avatar", json=json, params=params)
+
+    def delete_cover_conversations(self, conv_id: str, **params: Any) -> Any:
+        """Remove a channel's cover banner
+
+        ``DELETE /collab/conversations/{conv_id}/cover``
+        """
+        return self._c.request("DELETE", f"collab/conversations/{conv_id}/cover", params=params)
+
+    def update_cover_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Upload a channel's cover banner
+
+        ``PUT /collab/conversations/{conv_id}/cover``
+        """
+        return self._c.request("PUT", f"collab/conversations/{conv_id}/cover", json=json, params=params)
+
+    def delivered_conversations(self, conv_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Messages reached this app
+
+        ``POST /collab/conversations/{conv_id}/delivered``
+        """
+        return self._c.request("POST", f"collab/conversations/{conv_id}/delivered", json=json, params=params)
 
     def get_files_conversations(self, conv_id: str, **params: Any) -> Any:
         """The conversation's files
@@ -1930,6 +2000,41 @@ class CollabOps(_Namespace):
         """
         return self._c.request("GET", "collab/search", params=params)
 
+    def list_stickers(self, **params: Any) -> Any:
+        """The sticker catalogue
+
+        ``GET /collab/stickers``
+        """
+        return self._c.request("GET", "collab/stickers", params=params)
+
+    def list_support(self, **params: Any) -> Any:
+        """Your FlowpyDisk Support chat
+
+        ``GET /collab/support``
+        """
+        return self._c.request("GET", "collab/support", params=params)
+
+    def create_support(self, *, json: Any = None, **params: Any) -> Any:
+        """Open your FlowpyDisk Support chat
+
+        ``POST /collab/support``
+        """
+        return self._c.request("POST", "collab/support", json=json, params=params)
+
+    def list_messages(self, **params: Any) -> Any:
+        """Your support chat's messages, newest first
+
+        ``GET /collab/support/messages``
+        """
+        return self._c.request("GET", "collab/support/messages", params=params)
+
+    def create_support_messages(self, *, json: Any = None, **params: Any) -> Any:
+        """Write to FlowpyDisk Support
+
+        ``POST /collab/support/messages``
+        """
+        return self._c.request("POST", "collab/support/messages", json=json, params=params)
+
     def list_threads(self, **params: Any) -> Any:
         """Your threads
 
@@ -1967,7 +2072,7 @@ class CollabOps(_Namespace):
 
 
 class CommentsOps(_Namespace):
-    """5 operations."""
+    """7 operations."""
 
     def list_comments(self, **params: Any) -> Any:
         """Comments on one file, table or canvas
@@ -1990,6 +2095,13 @@ class CommentsOps(_Namespace):
         """
         return self._c.request("GET", "comments/mentionable", params=params)
 
+    def list_unread(self, **params: Any) -> Any:
+        """How many comments on each card of a board are new to you
+
+        ``GET /comments/unread``
+        """
+        return self._c.request("GET", "comments/unread", params=params)
+
     def delete_comments(self, comment_id: str, **params: Any) -> Any:
         """Delete your own comment
 
@@ -2003,6 +2115,13 @@ class CommentsOps(_Namespace):
         ``PATCH /comments/{comment_id}``
         """
         return self._c.request("PATCH", f"comments/{comment_id}", json=json, params=params)
+
+    def read_comments(self, comment_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Mark a board comment thread read for you
+
+        ``POST /comments/{comment_id}/read``
+        """
+        return self._c.request("POST", f"comments/{comment_id}/read", json=json, params=params)
 
 
 class ConnectionsOps(_Namespace):
@@ -2355,7 +2474,7 @@ class KnowledgeOps(_Namespace):
 
 
 class MailOps(_Namespace):
-    """52 operations."""
+    """53 operations."""
 
     def list_bulk_sends(self, **params: Any) -> Any:
         """List bulk sends
@@ -2426,6 +2545,13 @@ class MailOps(_Namespace):
         ``DELETE /mail/drafts/{draft_id}/attachments/{attachment_id}``
         """
         return self._c.request("DELETE", f"mail/drafts/{draft_id}/attachments/{attachment_id}", params=params)
+
+    def get_pictures(self, draft_id: str, content_id: str, **params: Any) -> Any:
+        """A picture inside a draft
+
+        ``GET /mail/drafts/{draft_id}/pictures/{content_id}``
+        """
+        return self._c.request("GET", f"mail/drafts/{draft_id}/pictures/{content_id}", params=params)
 
     def send_drafts(self, draft_id: str, *, json: Any = None, **params: Any) -> Any:
         """Send a draft
@@ -2843,7 +2969,7 @@ class MarketOps(_Namespace):
 
 
 class NotificationsOps(_Namespace):
-    """4 operations."""
+    """8 operations."""
 
     def list_notifications(self, **params: Any) -> Any:
         """List notifications + unread count
@@ -2851,6 +2977,34 @@ class NotificationsOps(_Namespace):
         ``GET /notifications/``
         """
         return self._c.request("GET", "notifications/", params=params)
+
+    def get_rate(self, token: str, **params: Any) -> Any:
+        """The rating given from one lifecycle email
+
+        ``GET /notifications/emails/rate/{token}``
+        """
+        return self._c.request("GET", f"notifications/emails/rate/{token}", params=params)
+
+    def create_rate(self, token: str, *, json: Any = None, **params: Any) -> Any:
+        """Record a 1 to 5 rating from a lifecycle email
+
+        ``POST /notifications/emails/rate/{token}``
+        """
+        return self._c.request("POST", f"notifications/emails/rate/{token}", json=json, params=params)
+
+    def get_stop(self, token: str, **params: Any) -> Any:
+        """Whether a lifecycle email's Stop link has already stopped them
+
+        ``GET /notifications/emails/stop/{token}``
+        """
+        return self._c.request("GET", f"notifications/emails/stop/{token}", params=params)
+
+    def create_stop(self, token: str, *, json: Any = None, **params: Any) -> Any:
+        """Stop the lifecycle emails (one click)
+
+        ``POST /notifications/emails/stop/{token}``
+        """
+        return self._c.request("POST", f"notifications/emails/stop/{token}", json=json, params=params)
 
     def create_read_all(self, *, json: Any = None, **params: Any) -> Any:
         """Mark all read
@@ -2886,7 +3040,7 @@ class OpsOps(_Namespace):
 
 
 class PublicOps(_Namespace):
-    """36 operations."""
+    """38 operations."""
 
     def list_embed_js(self, **params: Any) -> Any:
         """The loader a site pastes beside its embed
@@ -3020,6 +3174,20 @@ class PublicOps(_Namespace):
         ``GET /public/canvas/{slug}``
         """
         return self._c.request("GET", f"public/canvas/{slug}", params=params)
+
+    def get_channels(self, handle: str, **params: Any) -> Any:
+        """A public channel's page, for someone not signed in
+
+        ``GET /public/channels/{handle}``
+        """
+        return self._c.request("GET", f"public/channels/{handle}", params=params)
+
+    def get_posts_channels(self, handle: str, **params: Any) -> Any:
+        """A public channel's newest posts, when its owner shows them
+
+        ``GET /public/channels/{handle}/posts``
+        """
+        return self._c.request("GET", f"public/channels/{handle}/posts", params=params)
 
     def get_forms(self, slug: str, **params: Any) -> Any:
         """A form, as a visitor sees it
@@ -3230,7 +3398,7 @@ class PublishingOps(_Namespace):
 
 
 class RagOps(_Namespace):
-    """46 operations."""
+    """47 operations."""
 
     def create_actions(self, *, json: Any = None, **params: Any) -> Any:
         """Run an AI action on a piece of text
@@ -3245,6 +3413,13 @@ class RagOps(_Namespace):
         ``GET /rag/capability``
         """
         return self._c.request("GET", "rag/capability", params=params)
+
+    def list_made(self, **params: Any) -> Any:
+        """Files Flowpy made for you, newest first
+
+        ``GET /rag/chat/made``
+        """
+        return self._c.request("GET", "rag/chat/made", params=params)
 
     def get_made(self, entity_id: str, **params: Any) -> Any:
         """Which of your conversations made this file
@@ -3651,7 +3826,7 @@ class ReachOps(_Namespace):
 
 
 class SharingOps(_Namespace):
-    """27 operations."""
+    """28 operations."""
 
     def get_permissions_canvas(self, canvas_id: str, **params: Any) -> Any:
         """Who has been given access to this board
@@ -3687,6 +3862,13 @@ class SharingOps(_Namespace):
         ``GET /public/share/{token}/download``
         """
         return self._c.request("GET", f"public/share/{token}/download", params=params)
+
+    def get_pages_share(self, token: str, **params: Any) -> Any:
+        """A shared office file's pages, and the rest drawn on demand (no account)
+
+        ``GET /public/share/{token}/pages``
+        """
+        return self._c.request("GET", f"public/share/{token}/pages", params=params)
 
     def get_pages(self, token: str, number: str, **params: Any) -> Any:
         """One drawn page of a shared office file, as a WebP (no account)
@@ -3844,7 +4026,7 @@ class SharingOps(_Namespace):
 
 
 class StorageOps(_Namespace):
-    """61 operations."""
+    """67 operations."""
 
     def list_home(self, **params: Any) -> Any:
         """Everything the Home screen draws, in one request
@@ -3896,7 +4078,7 @@ class StorageOps(_Namespace):
         return self._c.request("GET", "storage/camera-backup", params=params)
 
     def list_destination(self, **params: Any) -> Any:
-        """Where the account's camera backup goes
+        """Where this device's camera backup goes
 
         ``GET /storage/camera-backup/destination``
         """
@@ -4028,6 +4210,20 @@ class StorageOps(_Namespace):
         """
         return self._c.request("GET", f"storage/files/{file_id}/pages/{number}", params=params)
 
+    def get_pdf_pages_files(self, file_id: str, **params: Any) -> Any:
+        """A PDF's pages
+
+        ``GET /storage/files/{file_id}/pdf-pages``
+        """
+        return self._c.request("GET", f"storage/files/{file_id}/pdf-pages", params=params)
+
+    def pdf_pages_files(self, file_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Change a PDF's pages, or extract some into a new PDF
+
+        ``POST /storage/files/{file_id}/pdf-pages``
+        """
+        return self._c.request("POST", f"storage/files/{file_id}/pdf-pages", json=json, params=params)
+
     def get_preview_files(self, file_id: str, **params: Any) -> Any:
         """Read a Word document in the app
 
@@ -4077,6 +4273,27 @@ class StorageOps(_Namespace):
         """
         return self._c.request("POST", f"storage/files/{file_id}/restore", json=json, params=params)
 
+    def get_save_back_files(self, file_id: str, **params: Any) -> Any:
+        """Can this note be saved back into its Word document
+
+        ``GET /storage/files/{file_id}/save-back``
+        """
+        return self._c.request("GET", f"storage/files/{file_id}/save-back", params=params)
+
+    def save_back_files(self, file_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Save a note back into its Word document
+
+        ``POST /storage/files/{file_id}/save-back``
+        """
+        return self._c.request("POST", f"storage/files/{file_id}/save-back", json=json, params=params)
+
+    def get_to_note_files(self, file_id: str, **params: Any) -> Any:
+        """The note already made from a Word document
+
+        ``GET /storage/files/{file_id}/to-note``
+        """
+        return self._c.request("GET", f"storage/files/{file_id}/to-note", params=params)
+
     def to_note_files(self, file_id: str, *, json: Any = None, **params: Any) -> Any:
         """Turn a Word document into a note
 
@@ -4104,6 +4321,15 @@ class StorageOps(_Namespace):
         ``GET /storage/files/{file_id}/versions/{version_id}``
         """
         return self._c.request("GET", f"storage/files/{file_id}/versions/{version_id}", params=params)
+
+    def restore_versions(self, file_id: str, version_id: str, *, json: Any = None, **params: Any) -> Any:
+        """Put an old version back
+
+        ``POST /storage/files/{file_id}/versions/{version_id}/restore``
+        """
+        return self._c.request(
+            "POST", f"storage/files/{file_id}/versions/{version_id}/restore", json=json, params=params
+        )
 
     def get_folder_zips(self, zip_id: str, **params: Any) -> Any:
         """Follow a folder's background ZIP, and get its download link
@@ -4286,7 +4512,7 @@ class SyncOps(_Namespace):
 
 
 class TablesOps(_Namespace):
-    """36 operations."""
+    """38 operations."""
 
     def list_tables(self, **params: Any) -> Any:
         """List tables
@@ -4357,6 +4583,20 @@ class TablesOps(_Namespace):
         ``POST /tables/from-csv``
         """
         return self._c.request("POST", "tables/from-csv", json=json, params=params)
+
+    def create_from_file(self, *, json: Any = None, **params: Any) -> Any:
+        """Open an .xlsx or .csv file as tables, one per sheet
+
+        ``POST /tables/from-file``
+        """
+        return self._c.request("POST", "tables/from-file", json=json, params=params)
+
+    def get_jobs(self, job_id: str, **params: Any) -> Any:
+        """How far a file opened as tables in the background got
+
+        ``GET /tables/from-file/jobs/{job_id}``
+        """
+        return self._c.request("GET", f"tables/from-file/jobs/{job_id}", params=params)
 
     def delete_rows(self, row_id: str, **params: Any) -> Any:
         """Delete a row
